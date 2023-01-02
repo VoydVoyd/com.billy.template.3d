@@ -1,0 +1,19 @@
+{
+	"name": "com.billy.template.3d",
+	"displayName": "Billy 3D",
+	"version": "1.0.0",
+	"type": "template",
+	"host": "hub",
+	"unity": "2021.2",
+	"description": "This is an empty 3D project that uses Unity's built-in renderer, with Billy's preferred default packages and folders",
+	"dependencies": {
+		"com.unity.ide.rider": "3.0.16",
+		"com.unity.test-framework": "1.3.0",
+		"com.unity.textmeshpro": "3.0.6",
+		"com.unity.ugui": "1.0.0"
+	}
+                   "repository": {
+		"url": "https://github.com/VoydVoyd/com.billy.template.3d.git",
+		"type": "git"
+  	}
+}
