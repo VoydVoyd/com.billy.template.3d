@@ -15,7 +15,7 @@ jobs:
         id: compress
         with:
           command: c
-          cwd: ./test
+          cwd: ./
           files: |
             ./package
           outPath: com.billy.template.3d-1.0.0.tgz
