@@ -1,0 +1,21 @@
+{
+  "name": "tar-action",
+  "version": "1.1.2",
+  "description": "A github action to use tar in all platforms",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build ./src/index.js -m && mv ./dist/index.js .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "atulanand94@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "1.9.1",
+    "@actions/github": "^5.0.0",
+    "tar": "^6.1.11"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.21.1"
+  }
+}

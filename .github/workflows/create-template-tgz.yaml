@@ -1,0 +1,45 @@
+name: Create tgz
+run-name: ${{ github.actor }} is compressing a new template archive
+on: [push]
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-18.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@master
+      - name: Compress action step
+        uses: ./ # Uses an action in the root directory
+        id: compress
+        with:
+          command: c
+          cwd: ./test
+          files: |
+            ./package
+          outPath: com.billy.template.3d-1.0.0.tgz
+          # Use the output from the `compress` step
+      - name: Get the output
+        run: echo "The output was ${{ steps.compress.outputs.done }}"
+      - uses: actions/upload-artifact@v1
+        with:
+          name: com.billy.template.3d-1.0.0.tgz
+          path: com.billy.template.3d-1.0.0.tgz
+      - name: Create extract directory
+        run: mkdir extract
+      - name: Extract files
+        uses: ./
+        id: extract
+        with:
+          command: x
+          cwd: ./extract
+          files: yolo.tar.gz
+      - name: Check extracted file exist
+        id: check-files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "./extract/toCompress/abc/test.txt"
+      - name: Fail if file does not exist
+        if: steps.check-files.outputs.files_exists == 'false'
+        run: exit 1
