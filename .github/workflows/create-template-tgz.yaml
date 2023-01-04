@@ -34,12 +34,12 @@ jobs:
         with:
           command: x
           cwd: ./extract
-          files: yolo.tar.gz
+          files: com.billy.template.3d-1.0.0.tgz
       - name: Check extracted file exist
         id: check-files
         uses: andstor/file-existence-action@v1
         with:
-          files: "./extract/toCompress/abc/test.txt"
+          files: "./extract/package/package.json"
       - name: Fail if file does not exist
         if: steps.check-files.outputs.files_exists == 'false'
         run: exit 1
